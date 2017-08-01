@@ -8,8 +8,6 @@
 
 ## C++代码
 ```
-class Solution {
-public:
     bool searchPath(char * matrix,int rows,int cols,int row,int col,char *str,int& pathLength,bool* visited){
         //输入判断
         if(str[pathLength]=='\0')
@@ -56,5 +54,4 @@ public:
         delete [] visited;
         return false;
     }
-};
 ```
