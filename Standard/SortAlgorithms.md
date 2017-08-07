@@ -10,7 +10,7 @@
 解法6：堆排序，时间复杂度为O(nlogn)
 
 ## C++代码
-##冒泡排序##
+**冒泡排序**
 ```
 void BubbleSort(int array[],int length)
 {
@@ -27,7 +27,7 @@ void BubbleSort(int array[],int length)
 	}
 }
 ```
-##插入排序##
+**插入排序**
 ```
 void InsertSort(int array[],int length)
 {
@@ -50,7 +50,7 @@ void InsertSort(int array[],int length)
 	}
 }
 ```
-##选择排序##
+**选择排序**
 ```
 void SelectSort(int array[],int length)
 {
@@ -72,7 +72,7 @@ void SelectSort(int array[],int length)
 	}
 }
 ```
-##归并排序##
+**归并排序**
 ```
 void MergeSortImp(int array[],int start, int end,int result[])
 {
@@ -109,7 +109,7 @@ void Merge(int array[],int start,int end,int result[])
 		result[result_index++]=array[j++];
 }
 ```
-##快速排序##
+**快速排序**
 ```
 int Partition(int array[],int first,int last)；
 
@@ -151,7 +151,7 @@ int Partition(int array[],int first,int last)
 	return right;
 }
 ```
-##堆排序##
+**堆排序**
 ```
 void MaxHeapify(int a[],int root,int first,int end)；//维护最大堆
 void BuildMaxHeap(int a[],int length);//构造最大堆

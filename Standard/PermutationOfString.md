@@ -7,7 +7,7 @@
 拓展：假如是要求字符串的所有组合。同样地，我们使用递归求解长度为m(m>1)的所有组合：1）把字符串两部分，第一个字符和其余字符；2）如果组合中包含第一个字符，则下一步在剩余的字符中选取m-1个字符；若不包含，则在剩余的字符中选取m个字符。
 
 ## C++代码
-##字符串的排列##
+**字符串的排列**
 ```
 void Perm(string str, int begin, int end, vector<string>& vec);、、
 
@@ -69,7 +69,46 @@ void Permutation(char* pStr, char* pBegin，vector<string>& vec)
 
 
 ```
-##拓展：字符串的组合##
+**拓展：字符串的组合**
 ```
+//在字符串str中得到长度为m的组合result_m, 并保存到results
+void Combination(char * str,int m,vector<char> result_m,vector<vector<char>> results)；
 
+vector<vector<char>> CombinationOfString(string str)
+{
+    if (str=="")
+        return vector<string>();
+    vector<vector<char>> results;
+    vector<char> result_m;
+    int n = str.length();//设字符串长度为n
+    for(int m=1;m<=n;++m) 
+    {
+        //获取长度为m的组合
+        Combination((char*)str.c_str(),m,result_m,results);
+    }
+    return results;
+}
+//在字符串str中得到长度为m的组合result_m, 并保存到results
+void Combination(char * str,int m,vector<char> result_m,vector<vector<char>> results)
+{
+    string tmp="";
+    if (m==0)
+    {
+        results.push_back(result_m);
+        /*for (vector<char>::iterator iter=result_m.begin();iter!=result_m.end();++iter)
+        {
+            cout<<*iter;
+        }
+        printf("\n");*/
+        return;
+    }
+    if (*str=='\0')
+    {
+        return;
+    }
+    result_m.push_back(*str);
+    Combination(str+1,m-1,result_m,results);
+    result_m.pop_back();
+    Combination(str+1,m,result_m,results);
+}
 ```
