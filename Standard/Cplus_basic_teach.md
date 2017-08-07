@@ -10,7 +10,8 @@ int main()
 {
 	//初识c++
 	firstDemo();
-	//C++简单输入输出
+	//C++简单输入输出 http://www.cnblogs.com/lucyjiayou/archive/2012/01/05/2312684.html  
+	//http://blog.csdn.net/lmerissa/article/details/50536469
 	//int n,m;
 	//cin>>n>>m;//(cin>>n)类的函数调用，返回的类型仍然是cin
 	//sum(n);
@@ -18,7 +19,7 @@ int main()
 	const int constn = PI;
 	string str = HW;
 	//简单数据类型，bool,char,int,float,double,long,short,定义/声明，使用，类型转换（强制、自动转换） unsigned   后缀unsigned int i=10ul，
-	int i = (int) PI; //static_cast、dynamic_cast、const_cast和reinterpret_cast
+	int i = (int) PI; //static_cast、dynamic_cast、const_cast和reinterpret_cast: http://www.jellythink.com/archives/205
 	int i2 = static_cast<int> (PI); 
 	unsigned int a = 10;
 	//i = -a;
