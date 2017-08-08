@@ -13,5 +13,46 @@
 
 ## C++代码
 ```
+class Solution {
+public:
+multiset<int,greater<int>> big; //实现最大堆
+multiset<int,less<int>> small; //实现最小堆
+void Insert(int num)
+{
+    static int count =0;
+    //当输入数据次数为偶数时，插入最大堆
+    if(count%2==0)
+    {
+        if (small.empty()||num<*small.begin()){
+            big.insert(num);
+        }
+        else{//输入的数比最小堆的最小值要大时，调整数据
+            big.insert(*small.begin());
+            small.erase(small.begin());
+            small.insert(num);
+        }
+    }
+    else
+    {
+        if (big.empty()||num>*big.begin()){
+            small.insert(num);
+        }
+        else{//输入的数比最大堆的最大值要小时，调整数据
+            small.insert(*big.begin());
+            big.erase(big.begin());
+            big.insert(num);
+        }
+    }
+    count++;
+}
 
+double GetMedian()
+{ 
+    if ((big.size()+small.size())&1) //为奇数
+        return (double)*big.begin();
+    else
+        return (double)(*big.begin()+*small.begin())/2;
+}
+
+};
 ```
