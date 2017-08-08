@@ -11,16 +11,38 @@
 #define MAX (a>b)?a:b
 #define HW "Helloworld"
 
+//类定义
+class ANIMAL
+{
+public:
+	ANIMAL():_type("ANIMAL"){};
+	virtual void OutPutname(){cout<<"ANIMAL";};
+private:
+	string _type ;
+};
+class DOG:public ANIMAL
+{
+public:
+	DOG():_name("大黄"),_type("DOG"){};
+	void OutPutname(){cout<<_name;};
+	void OutPuttype(){cout<<_type;};
+private:
+	string _name ;
+	string _type ;
+};
+
+//函数声明
 void firstDemo();
 void C_InputOutput();
-void Cplusplus_InputOutput()
+void Cplusplus_InputOutput();
+void TypesTransform();//强制类型转换
 
 int main()
 {
 	//初识c++
 	firstDemo();
 	
-	//C++简单输入输出 
+	//C&C++简单输入输出 
 	C_InputOutput();
 	Cplusplus_InputOutput()
 	
@@ -221,5 +243,87 @@ void Cplusplus_InputOutput()
 
 	*/
 	
+}
+
+void TypesTransform()
+{
+	//兼容C：(T)element 或者 T（element）
+	//C++四种强制类型转换
+	/************************************************************************/
+	/*static_cast<T*>      (expression)                                     */
+	/*http://www.cnblogs.com/QG-whz/p/4509710.html                          */
+	/************************************************************************/
+	//编译器隐式执行的任何类型转换都可以由static_cast来完成，比如int与float、double与char、enum与int之间的转换等。
+	double a = 1.999;
+	int b = static_cast<int>(a); //相当于a = b ;
+
+	//使用static_cast可以找回存放在void*指针中的值。
+	double a = 1.999;
+	void * vptr = & a;
+	double * dptr = static_cast<double*>(vptr);
+	cout<<*dptr<<endl;//输出1.999
+
+	//static_cast也可以用在于基类与派生类指针或引用类型之间的转换。然而它不做运行时的检查，不如dynamic_cast安全。
+	//static_cast仅仅是依靠类型转换语句中提供的信息来进行转换，而dynamic_cast则会遍历整个类继承体系进行类型检查,
+	//因此dynamic_cast在执行效率上比static_cast要差一些。
+	//基类指针转为派生类指针,且该基类指针指向基类对象。
+	ANIMAL * ani1 = new ANIMAL ;
+	DOG * dog1 = static_cast<DOG*>(ani1);
+	//dog1->OutPuttype();//错误，在ANIMAL类型指针不能调用方法OutPutType（）；在运行时出现错误。
+
+	//基类指针转为派生类指针，且该基类指针指向派生类对象
+	ANIMAL * ani3 = new DOG;
+	DOG* dog3 = static_cast<DOG*>(ani3);
+	dog3->OutPutname(); //正确
+
+	//子类指针转为派生类指针
+	DOG *dog2= new DOG;
+	ANIMAL *ani2 = static_cast<DOG*>(dog2);
+	ani2->OutPutname(); //正确，结果输出为大黄
+
+	/************************************************************************/
+	/*const_cast<T*>       (expression)                                     */
+	/*http://www.cnblogs.com/QG-whz/p/4513136.html                          */
+	/************************************************************************/
+	//用来添加或删除表达式/变量的const性质。
+	//主要用于函数参数传递
+	const int constant = 21;
+	int * num = const_cast<int*>(&constant);
+	//对声明为const的变量来说，常量就是常量，任你各种转化，常量的值就是不会变。这是C++的一个承诺。
+	const int constant = 26;
+	const int* const_p = &constant;
+	int* modifier = const_cast<int*>(const_p);
+	*modifier = 3;
+	cout<< "constant:  "<<constant<<endl; //仍为26,但地址一样，*modifier属于未定义行为，随编译器而异，原因不明
+	cout<<"*modifier:  "<<*modifier<<endl;
+	system("pause");
+	//如果我们定义了一个非const的变量，却使用了一个指向const值的指针来指向它
+	//int constant = 26;
+	//const int* const_p = &constant;
+	//int* modifier = const_cast<int*>(const_p);
+	//*modifier = 3;
+	//cout<< "constant:  "<<constant<<endl;  //3
+	//cout<<"*modifier:  "<<*modifier<<endl;
+
+	/************************************************************************/
+	/*dynamic_cast<T*>     (expression)                                     */
+	/http://www.cnblogs.com/QG-whz/p/4517336.html                           */
+	/************************************************************************/
+	//dynamic_cast提供RTTI（Run-Time Type Information），也就是运行时类型识别，使用dynamic_cast转换的Base类至少带有一个虚函数
+	//用于类继承层次间的指针或引用转换，安全地向下转型，即基类对象的指针或引用转换为同一继承层次的其他指针或引用
+	//对于“向下转型”有两种情况。一种是基类指针所指对象是派生类类型的，这种转换是安全的；
+	//另一种是基类指针所指对象为基类类型，在这种情况下dynamic_cast在运行时做检查，转换失败，返回结果为0；
+	//引用转换类似，但并不存在空引用，所以引用的dynamic_cast检测失败时会抛出一个bad_cast异常
+	ANIMAL * ani_d = new ANIMAL ;
+	DOG * dog_d = dynamic_cast<DOG*>(ani_d); //检查转换失败
+
+	/************************************************************************/
+	/*reinterpret_cast<T*> (expression)                                     */
+	/************************************************************************/
+	//以转化任何内置的数据类型为其他任何的数据类型，也可以转化任何指针类型为其他的类型。它甚至可以转化内置的数据类型为指针，无须考虑类型安全或者常量的情形。
+	//，T必须是一个指针、引用、算术类型、指向函数的指针或指向一个类成员的指针。
+	//比如能够用于诸如char* 到 int*，或者One_class* 到 Unrelated_class*等类似这样的转换，因此可能是不安全的。
+	//一般不到万不得已不要使用。
+
 }
 ```
