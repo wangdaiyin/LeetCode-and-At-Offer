@@ -2,8 +2,12 @@
 ```
 //学生：高一 已有一定JAVA基础
 /*课程记录
-//2017.08.07 15:40-17:40
-//
+//2017.08.07 15:40-17:50
+//2017.08.09 15:50-18:00
+*/
+/*算法练习网站
+//http://noi.openjudge.cn
+//http://codevs.cn/problem/
 */
 #include "head.h"; //自定义头文件
 //宏定义常量/表达式
@@ -232,7 +236,7 @@ void Cplusplus_InputOutput()
 	/*文件输出 fstream, ofstream
 	//
 	ofstream fout;
-	fout.open("E:\\input.txt",ios::out);//或者ofstream fout1("E:\\input.txt",ios::out)
+	fout.open("E:\\output.txt",ios::out);//或者ofstream fout1("E:\\input.txt",ios::out)
 	if (!fout)
 	{
 	cout<<"Open Failed!"<<endl;
