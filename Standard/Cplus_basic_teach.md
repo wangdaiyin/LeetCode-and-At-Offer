@@ -40,6 +40,8 @@ void firstDemo();
 void C_InputOutput();
 void Cplusplus_InputOutput();
 void TypesTransform();//强制类型转换
+int Fabonaci(int n);
+int Fabonaci2(int n);
 
 int main()
 {
@@ -71,7 +73,9 @@ int main()
 	//复合数据类型:数组、类、结构、共用体、枚举……
 	
 	//函数：定义、调用、函数传参、返回、函数指针
-	
+	//递归：以斐波那契数列为例，拓展到n台阶走法
+	Fabonaci(10);  //递归
+	Fabonaci2(10); //迭代
 	//内联函数、函数重载、函数模板
 	
 	//内存模型、new、
@@ -86,6 +90,32 @@ void firstDemo()
 {
 	cout<<"Hello World!"<<" C++!"<<"\n";
 	printf("%.2f:%s\n",1.00067,"Hello World,C!");
+}
+
+//斐波那契数列1 1 2 3 5 8 13 21 34 ...
+//得到第n个斐波那契数
+int Fabonaci(int n)
+{
+	//int result = 0;
+	if(n == 1)
+		return 1;
+	else if(n == 2)
+		return 1;
+	else
+		return Fabonaci(n-1)+Fabonaci(n-2);
+}
+int Fabonaci2(int n)
+{
+	int result=0;
+	int firstnum = 1;
+	int secondnum =1;
+	for(int i=2;i<n;i++)
+	{
+		result = firstnum+secondnum;
+		firstnum = secondnum;
+		secondnum = result;
+	}
+	return result;
 }
 
 void C_InputOutput()
