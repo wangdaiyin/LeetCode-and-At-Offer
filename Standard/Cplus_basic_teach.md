@@ -4,6 +4,7 @@
 /*课程记录
 //2017.08.07 15:40-17:50
 //2017.08.09 15:50-18:00
+//2017.08.10 15:30-17:50
 */
 /*算法练习网站
 //http://noi.openjudge.cn
@@ -60,7 +61,10 @@ int main()
 	unsigned int a = 10;
 	//i = -a;
 	//a=-10;
-	
+	//string-int互相转换 http://blog.csdn.net/u010510020/article/details/73799996
+	string s = "12";   
+	int a = atoi(s.c_str());  
+	s = to_string(a);
 	//C++强制类型转换static_cast、dynamic_cast、const_cast和reinterpret_cast: http://www.jellythink.com/archives/205
 	
 	int i2 = static_cast<int> (PI); 
