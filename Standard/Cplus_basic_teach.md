@@ -2,8 +2,13 @@
 ```
 //学生：高一 已有一定JAVA基础
 /*课程记录
-//2017.08.07 15:40-17:40
-//
+//2017.08.07 15:40-17:50
+//2017.08.09 15:50-18:00
+//2017.08.10 15:30-17:50
+*/
+/*算法练习网站
+//http://noi.openjudge.cn
+//http://codevs.cn/problem/
 */
 #include "head.h"; //自定义头文件
 //宏定义常量/表达式
@@ -36,6 +41,8 @@ void firstDemo();
 void C_InputOutput();
 void Cplusplus_InputOutput();
 void TypesTransform();//强制类型转换
+int Fabonaci(int n);
+int Fabonaci2(int n);
 
 int main()
 {
@@ -54,7 +61,10 @@ int main()
 	unsigned int a = 10;
 	//i = -a;
 	//a=-10;
-	
+	//string-int互相转换 http://blog.csdn.net/u010510020/article/details/73799996
+	string s = "12";   
+	int a = atoi(s.c_str());  
+	s = to_string(a);
 	//C++强制类型转换static_cast、dynamic_cast、const_cast和reinterpret_cast: http://www.jellythink.com/archives/205
 	
 	int i2 = static_cast<int> (PI); 
@@ -67,7 +77,9 @@ int main()
 	//复合数据类型:数组、类、结构、共用体、枚举……
 	
 	//函数：定义、调用、函数传参、返回、函数指针
-	
+	//递归：以斐波那契数列为例，拓展到n台阶走法
+	Fabonaci(10);  //递归
+	Fabonaci2(10); //迭代
 	//内联函数、函数重载、函数模板
 	
 	//内存模型、new、
@@ -82,6 +94,32 @@ void firstDemo()
 {
 	cout<<"Hello World!"<<" C++!"<<"\n";
 	printf("%.2f:%s\n",1.00067,"Hello World,C!");
+}
+
+//斐波那契数列1 1 2 3 5 8 13 21 34 ...
+//得到第n个斐波那契数
+int Fabonaci(int n)
+{
+	//int result = 0;
+	if(n == 1)
+		return 1;
+	else if(n == 2)
+		return 1;
+	else
+		return Fabonaci(n-1)+Fabonaci(n-2);
+}
+int Fabonaci2(int n)
+{
+	int result=0;
+	int firstnum = 1;
+	int secondnum =1;
+	for(int i=2;i<n;i++)
+	{
+		result = firstnum+secondnum;
+		firstnum = secondnum;
+		secondnum = result;
+	}
+	return result;
 }
 
 void C_InputOutput()
@@ -232,7 +270,7 @@ void Cplusplus_InputOutput()
 	/*文件输出 fstream, ofstream
 	//
 	ofstream fout;
-	fout.open("E:\\input.txt",ios::out);//或者ofstream fout1("E:\\input.txt",ios::out)
+	fout.open("E:\\output.txt",ios::out);//或者ofstream fout1("E:\\input.txt",ios::out)
 	if (!fout)
 	{
 	cout<<"Open Failed!"<<endl;
