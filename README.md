@@ -9,11 +9,13 @@
     * 回溯法- 矩阵中的路径  FindPathinMetrix
     * 回溯法- 机器人的运动范围 RobotMoveRange
     * 回溯法- N皇后问题 NQueens
+    * 回溯法- 网易2017算法工程师笔试题3
     * 贪心法- Dijkstra算法 ShortestDistanceAlgorithm
     * 动态规划- Floyd最短路径算法 ShortestDistanceAlgorithm
     * 动态规划- 最长公共子序列 FindLongestCommonSubstring 
     * 动态规划- 最大字段和 FindMaxSumofSubArray
     * 动态规划- 最长不包含重复字符的子字符串 FindLongestNotRepeatedSubstring
+    * 动态规划- 背包问题 KnapsackProblem
 
 #### 数组问题
     * 数组中重复的数字 DuplicateNumber
@@ -34,6 +36,7 @@
 #### 链表问题
 
 #### 堆栈问题
+    * 栈的压入、弹出序列 StackPushPopOrder
 
 #### 队列问题
 
