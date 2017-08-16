@@ -25,6 +25,8 @@
     * 连续子数组的最大和 FindLargestSumofSubArray
     * 完美洗牌问题/交叉排序 PerfectShuffle
     * 数字子串划分 NumberDividebyThree
+    * 在二维数组中查找 Findin2DArray
+    * 
 
 #### 字符串问题
     * 字符串的排列（拓展：字符串的组合） PermutationOfString 
@@ -32,8 +34,11 @@
     * 两个字符串中最长公共子串 FindLongestCommonSubstring
     * 最长不含重复字符的子串 FindMaxNotRepeatedSubstring
     * 第一个只出现一次的字符 FindFirstCharOnlyAppearOne
+    * 替换空格 ReplaceSpace
+    * 
 
 #### 链表问题
+    * 从尾到头打印链表 printListFromTailToHead
 
 #### 堆栈问题
     * 栈的压入、弹出序列 StackPushPopOrder
@@ -41,7 +46,8 @@
 #### 队列问题
 
 #### 树问题
-
+    *重建二叉树 reConstructBinaryTree 
+    
 #### 图问题
 
 #### 其他
