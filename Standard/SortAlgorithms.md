@@ -151,7 +151,8 @@ int Partition(int array[],int first,int last)
 	return right;
 }
 ```
-**堆排序**
+**堆排序,参考资料：//http://www.cnblogs.com/AlgrithmsRookie/p/5896603.html**
+
 ```
 void MaxHeapify(int a[],int root,int first,int end)；//维护最大堆
 void BuildMaxHeap(int a[],int length);//构造最大堆
