@@ -16,7 +16,10 @@
     * 动态规划- 最大字段和 FindMaxSumofSubArray
     * 动态规划- 最长不包含重复字符的子字符串 FindLongestNotRepeatedSubstring
     * 动态规划- 背包问题 KnapsackProblem
-
+    * 贪心法- 剪绳子 CutRope
+    * 动态规划- 剪绳子 CutRope
+    
+    
 #### 数组问题
     * 数组中重复的数字 DuplicateNumber
     * 数组中出现次数超过一半的数字/选择中位数 SelectMiddleNumber
@@ -26,7 +29,7 @@
     * 完美洗牌问题/交叉排序 PerfectShuffle
     * 数字子串划分 NumberDividebyThree
     * 在二维数组中查找 Findin2DArray
-    * 
+    * 旋转数组的最小数字 MininRotareArray
 
 #### 字符串问题
     * 字符串的排列（拓展：字符串的组合） PermutationOfString 
@@ -35,24 +38,34 @@
     * 最长不含重复字符的子串 FindMaxNotRepeatedSubstring
     * 第一个只出现一次的字符 FindFirstCharOnlyAppearOne
     * 替换空格 ReplaceSpace
-    * 
+    * 正则表达式匹配 RegExpMatch
+    * 表示数值的字符串 IsNumeric
 
 #### 链表问题
-    * 从尾到头打印链表 printListFromTailToHead
+    * 从尾到头打印链表 PrintListFromTailToHead
+    * 删除链表中重复结点 DeleteDuplication
+    * 合并两个排序的链表 MergeList
 
 #### 堆栈问题
     * 栈的压入、弹出序列 StackPushPopOrder
 
 #### 队列问题
+    * 用两个栈实现队列 Queueby2Stack
 
 #### 树问题
-    *重建二叉树 reConstructBinaryTree 
-    
+    *重建二叉树 reConstructBinaryTree
+    *树的子结构 HasSubtree 
+    *从上到下打印二叉树(利用队列进行宽度优先搜索) PrintTreeFromTopToBottom_BFS
+    *二叉树中和为某一值的路径 FindPathinTree
+    *二叉搜索树转双向链表 TreeConvertList
+
 #### 图问题
 
-#### 其他
-    * 2017阿里巴巴校招算法工程师在线测试题[稳定婚姻问题的改进版]
 
+#### 其他
+    * 2017阿里巴巴校招算法工程师在线测试题[稳定婚姻问题的改进版] Alibaba_Test
+    * 2017年阿里巴巴校招算法工程师编程题(一)[最短路径算法的改进版：动态规划] Alibaba_Test_9_1  
+    * 2017年阿里巴巴校招算法工程师编程题(二)[连续编号统计的改进版：快速检索] Alibaba_Test_9_2  
 
 ## 剑指Offer答案全解
 剑指Offer一书作者已提供全部代码：https://github.com/wangdaiyin/CodingInterviewChinese2

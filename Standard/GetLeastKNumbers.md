@@ -6,6 +6,8 @@
 解法2：同样基于Partition找到第k大个数，使得比第k个数小的都位于它的左边，时间复杂度为O(n)，但需要可以修改输入数组，或者提供O(n)备份空间。
 解法3：建立一个大小为k的数据容器来存储最小的k个数字，若容器未满，则直接插入，若容器已满，则比较输入数和容器内最大值的大小，若比最大值小则替换最大值，否则直接输入下一个数。这里需要做的3件事情：1.k个整数中寻找最大数；2.在容器中删除最大数；3.插入一个新的数值；这三步可以用二叉树（最大堆）实现（可以基于STL模板中的multiset<int,greater<int>>实现）,这3步只需logk的时间复杂度，故该解法的时间复杂度为O(nlogk),适合处理海量数据。
 
+拓展：寻找第k大的数  https://www.nowcoder.com/questionTerminal/e016ad9b7f0b45048c58a9f27ba618bf
+
 ## C++代码
 ##解法2##
 ```
@@ -15,11 +17,11 @@ int Partition(int * input,int n,int start,int end)
 	int index = start;
 	while (start<end)
 	{
-		while (input[start]>=input[index])
+		while (input[start]<=input[index])  //若想取得最大的k个数：修改为>=
 		{
 			start++;
 		}
-		while (input[end]<input[index])
+		while (input[end]>input[index])  //若想取得最大的k个数：修改为<
 		{
 			end--;
 		}
@@ -28,7 +30,7 @@ int Partition(int * input,int n,int start,int end)
 			swap(input[start],input[end]);
 		}
 	}
-	swap(input[start],input[end]);
+	swap(input[index],input[end]);
 	index = end;
 	return index;
 }
@@ -53,9 +55,9 @@ int * GetLeastKNumbers(int * input,int n,int k)
 			index = Partition(input,n,start,end);
 		}
 	}
-	for (int i=0;i<k;i++)
+	for (int i=0;i<k;i++)  
 	{
-		output[i]=input[i];
+		output[i]=input[i];  //最大的k个数 / 最小的k个数
 	}
 	return output;
 }
