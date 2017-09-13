@@ -4,7 +4,9 @@
 ## 解法
 递归求解：1）把字符串两部分，一部分是字符串的第一个字符，另一部分是第一个字符之后的所有字符，这后一部分是n-1的子问题；2）拿第一个字符和它后面的字符逐个比对，如果不相同则交换。时间复杂度为O(n!)
 
-拓展：假如是要求字符串的所有组合。同样地，我们使用递归求解长度为m(m>1)的所有组合：1）把字符串两部分，第一个字符和其余字符；2）如果组合中包含第一个字符，则下一步在剩余的字符中选取m-1个字符；若不包含，则在剩余的字符中选取m个字符。
+拓展：假如是要求字符串的所有组合。
+思路1：同样地，我们使用递归求解长度为m(m>1)的所有组合：1）把字符串两部分，第一个字符和其余字符；2）如果组合中包含第一个字符，则下一步在剩余的字符中选取m-1个字符；若不包含，则在剩余的字符中选取m个字符。
+思路2：假如只能遍历字符串一遍，则可采用位图思想
 
 ## C++代码
 **字符串的排列**
@@ -112,3 +114,18 @@ void Combination(char * str,int m,vector<char> result_m,vector<vector<char>> res
     Combination(str+1,m,result_m,results);
 }
 ```
+**字符串的组合-思路2：只遍历一次数组**
+vector<string> CombinationOfString2(vector<string> data)
+{
+    if(data.size()==0) 
+        return vector<string>();
+    int len = 1<<data.size();
+    vector<string> res(len);
+    for(int i = 0; i<data.size();i++)
+        for(int j=1;j<len;j++){
+            if(j&(1<<i))
+                res[j] = res[j]+data[i];
+        }
+        
+    return res;
+}
